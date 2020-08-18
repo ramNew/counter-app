@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import "./App.css";
+import Counter from "./Counter";
+import CounterReducer from "./CounterReducer";
+import CounterTitle from "./CounterTitle";
+import GitHubLogo from "./GitHubLogo";
+import Title from "./Title";
 
-function App() {
+// An object of all possible example components that can be rendered
+const EXAMPLES = {
+  Counter,
+  CounterTitle,
+  CounterReducer,
+};
+
+type Examples = keyof typeof EXAMPLES;
+
+const EXAMPLE_NAMES = Object.keys(EXAMPLES) as Examples[];
+
+const App = () => {
+  // Use state to keep track of the current displayed example component
+  const [example, setExample] = React.useState<Examples>("Counter");
+
+  // The currently selected example component that should be rendered
+  const ExampleComponent = EXAMPLES[example];
+
+  // A list of buttons for all examples to render
+  const exampleButtons = EXAMPLE_NAMES.map((name) => (
+    <button
+      key={name}
+      onClick={() => setExample(name)}
+      className={name === example ? "active" : ""}
+    >
+      {name}
+    </button>
+  ));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Title />
+      <GitHubLogo />
+      <div className="container">
+        <div className="app">
+          {exampleButtons}
+          <div className="separator" />
+          <ExampleComponent />
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
