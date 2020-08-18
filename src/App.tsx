@@ -1,10 +1,10 @@
 import * as React from "react";
 import "./App.css";
-import Counter from "./Counter";
-import CounterReducer from "./CounterReducer";
-import CounterTitle from "./CounterTitle";
-import GitHubLogo from "./GitHubLogo";
-import Title from "./Title";
+import Counter from "./components/Counter";
+import CounterReducer from "./components/CounterReducer";
+import CounterTitle from "./components/CounterTitle";
+import GitHubLogo from "./components/GitHubLogo";
+import Title from "./components/Title";
 
 // An object of all possible example components that can be rendered
 const EXAMPLES = {
