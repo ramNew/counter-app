@@ -1,14 +1,6 @@
 import * as React from "react";
-
-interface State {
-  count: number;
-}
-
-type Actions = "reset" | "increment" | "decrement";
-
-interface Action {
-  type: Actions;
-}
+import { State } from "../interface/types";
+import { Action } from "../interface/types";
 
 const initialState: State = { count: 0 };
 
